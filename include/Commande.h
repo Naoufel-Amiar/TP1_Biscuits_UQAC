@@ -11,5 +11,4 @@ struct Commande
     Commande* suivante;
 };
 
-
 #endif
