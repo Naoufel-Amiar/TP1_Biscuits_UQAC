@@ -7,7 +7,13 @@
 int main(int argc, char* argv[])
 {
 
-    std::cout << "HELLO WORLD" << std::endl;
+    std::cout << "HELLO WORLD" << std::endl; //a suppr, simple test AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  1111111111
+    std::cout << "HELLO WORLD" << std::endl; //a suppr, simple test AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  22222222222
+    std::cout << "HELLO WORLD" << std::endl; //a suppr, simple test AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   333333333333
+    std::cout << "HELLO WORLD" << std::endl; //a suppr, simple test AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   4444444444444
+
+
+
     if (argc < 2)
     {
         std::cout << "Erreur : fichier TRANSACTIONS manquant." << std::endl;
