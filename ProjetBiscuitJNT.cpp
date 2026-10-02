@@ -1,14 +1,8 @@
-#include <iostream>
 #include <fstream>
 #include <string>
-
-<<<<<<< Updated upstream:ProjetBiscuitJNT.cpp
-#include "ListeCommandes.h"
-=======
 #include <iostream>
 
 #include "include/ListeCommandes.h"
->>>>>>> Stashed changes:main.cpp
 
 
 
@@ -94,17 +88,12 @@ void  crée_class_commandes(){
 
 int main (int argc, char* argv[])
 {
-<<<<<<< Updated upstream:ProjetBiscuitJNT.cpp
-
-    std::cout << "HELLO WORLD" << std::endl;
-=======
     crée_class_clients();
     crée_class_commandes();
     
    
   
 
->>>>>>> Stashed changes:main.cpp
     if (argc < 2)
     {
         std::cout << "Erreur : fichier TRANSACTIONS manquant." << std::endl;
@@ -127,13 +116,8 @@ int main (int argc, char* argv[])
 
     fichier.close();
 
-<<<<<<< Updated upstream:ProjetBiscuitJNT.cpp
-    return 0;
-}
-=======
     std::cout << "bbbbbbbbbb" << std::endl;
     return 0;
 }
 
 
->>>>>>> Stashed changes:main.cpp
