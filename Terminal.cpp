@@ -3,13 +3,20 @@
 #include <iostream>
 #include <string>
 
-// ---------------------------------------------------------
-// TERMINAL DE TEST
+// =========================================================
+// TERMINAL - VERSION DE TRAVAIL
 //
-// Permet de saisir manuellement les commandes du programme.
-// Pour l'instant, ? et $ sont fonctionnelles.
-// Les autres commandes seront raccordees progressivement.
-// ---------------------------------------------------------
+// Les commandes ? et $ sont fonctionnelles.
+//
+// Le terminal interactif sert actuellement a tester
+// l'appel des fonctions de ListeCommandes.
+//
+// A l'integration finale, cette logique devra etre adaptee
+// pour lire les operations depuis TRANSACTIONS.txt.
+//
+// Les commandes +, -, =, O et S seront raccordees
+// aux fonctions developpees par les autres membres.
+// =========================================================
 void lancerTerminal(ListeCommandes& liste)
 {
     std::string ligne;

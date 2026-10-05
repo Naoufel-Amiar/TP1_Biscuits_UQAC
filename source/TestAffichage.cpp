@@ -1,11 +1,14 @@
 #include "ListeCommandes.h"
 
-// ---------------------------------------------------------
-// TEMPORAIRE
+// =========================================================
+// FICHIER TEMPORAIRE DE TEST
 //
-// Construit manuellement une liste chainee permettant
-// de tester les commandes ? et $ sans utiliser charger().
-// ---------------------------------------------------------
+// Ce fichier construit manuellement des clients,
+// commandes et biscuits afin de tester ? et $
+// independamment du chargement des fichiers.
+//
+// NE PAS CONSERVER DANS LA VERSION FINALE.
+// =========================================================
 void ListeCommandes::creerDonneesTest()
 {
     // =========================
