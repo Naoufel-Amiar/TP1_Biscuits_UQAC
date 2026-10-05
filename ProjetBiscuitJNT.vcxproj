@@ -135,6 +135,11 @@
     <ClInclude Include="include\Commande.h" />
     <ClInclude Include="include\ListeCommandes.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\CLIENTS.txt" />
+    <Text Include="data\COMMANDES.txt" />
+    <Text Include="data\TRANSACTIONS.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

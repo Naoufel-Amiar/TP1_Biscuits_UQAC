@@ -1,0 +1,24 @@
+Tremblay
+Gagnon
+Chocolat 5
+Vanille 2
+&
+Tremblay
+Bouchard
+Chocolat 3
+Erable 4
+&
+Gagnon
+Fortin
+Vanille 10
+Chocolat 1
+&
+Bouchard
+Tremblay
+Erable 6
+Vanille 3
+&
+Fortin
+Fortin
+Chocolat 4
+&

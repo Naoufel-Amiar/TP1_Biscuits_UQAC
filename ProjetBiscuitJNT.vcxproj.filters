@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{1f30d296-2b42-4bfd-99b7-5d6ed177be16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ProjetBiscuitJNT.cpp">
@@ -41,5 +44,16 @@
     <ClInclude Include="include\ListeCommandes.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\CLIENTS.txt">
+      <Filter>data</Filter>
+    </Text>
+    <Text Include="data\COMMANDES.txt">
+      <Filter>data</Filter>
+    </Text>
+    <Text Include="data\TRANSACTIONS.txt">
+      <Filter>data</Filter>
+    </Text>
   </ItemGroup>
 </Project>

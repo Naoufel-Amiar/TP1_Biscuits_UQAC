@@ -1,0 +1,10 @@
+O CLIENTS.txt COMMANDES.txt
+? Tremblay
+$
++ Lefebvre 91 RuePapineau
+= Lefebvre Tremblay Chocolat 7 Vanille 2 &
+? Lefebvre
+$
+- Fortin
+$
+S CLIENTS.txt COMMANDES.txt
