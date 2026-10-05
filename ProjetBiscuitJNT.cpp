@@ -1,40 +1,88 @@
+////#include <iostream>
+////#include <fstream>
+////#include <string>
+////
+////#include "ListeCommandes.h"
+////
+////int main(int argc, char* argv[])
+////{
+////
+////    std::cout << "HELLO WORLD" << std::endl; //a suppr, simple test AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  1111111111
+////    std::cout << "HELLO WORLD" << std::endl; //a suppr, simple test AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  22222222222
+////    std::cout << "HELLO WORLD" << std::endl; //a suppr, simple test AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   333333333333
+////    std::cout << "HELLO WORLD" << std::endl; //a suppr, simple test AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   4444444444444
+////
+////
+////
+////    if (argc < 2)
+////    {
+////        std::cout << "Erreur : fichier TRANSACTIONS manquant." << std::endl;
+////        return 1;
+////    }
+////
+////    std::ifstream fichier(argv[1]);
+////
+////    if (!fichier.is_open())
+////    {
+////        std::cout << "Erreur : impossible d'ouvrir le fichier de transactions." << std::endl;
+////        return 1;
+////    }
+////
+////    ListeCommandes liste;
+////
+////    // TODO :
+////    // Lire les transactions O, S, +, -, =, ? et $
+////    // puis appeler les fonctions correspondantes.
+////
+////    fichier.close();
+////
+////    return 0;
+////}
+//
+//#include <iostream>
+//#include "ListeCommandes.h"
+//
+//int main()
+//{
+//    ListeCommandes liste;
+//
+//    // TEMPORAIRE :
+//    // construction manuelle des donnees de test.
+//    liste.creerDonneesTest();
+//
+//    std::cout << "===== TEST ? Tremblay =====" << std::endl;
+//    liste.afficherCommandes("Tremblay");
+//
+//    std::cout << std::endl;
+//
+//    std::cout << "===== TEST $ =====" << std::endl;
+//    liste.afficherBiscuitPopulaire();
+//
+//    std::cout << std::endl;
+//
+//    std::cout << "===== TEST client inexistant =====" << std::endl;
+//    liste.afficherCommandes("Inconnu");
+//
+//    return 0;
+//}
+
+
 #include <iostream>
-#include <fstream>
-#include <string>
 
 #include "ListeCommandes.h"
+#include "Terminal.h"
 
-int main(int argc, char* argv[])
+int main()
 {
-
-    std::cout << "HELLO WORLD" << std::endl; //a suppr, simple test AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  1111111111
-    std::cout << "HELLO WORLD" << std::endl; //a suppr, simple test AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  22222222222
-    std::cout << "HELLO WORLD" << std::endl; //a suppr, simple test AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   333333333333
-    std::cout << "HELLO WORLD" << std::endl; //a suppr, simple test AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   4444444444444
-
-
-
-    if (argc < 2)
-    {
-        std::cout << "Erreur : fichier TRANSACTIONS manquant." << std::endl;
-        return 1;
-    }
-
-    std::ifstream fichier(argv[1]);
-
-    if (!fichier.is_open())
-    {
-        std::cout << "Erreur : impossible d'ouvrir le fichier de transactions." << std::endl;
-        return 1;
-    }
-
     ListeCommandes liste;
 
-    // TODO :
-    // Lire les transactions O, S, +, -, =, ? et $
-    // puis appeler les fonctions correspondantes.
+    // TEMPORAIRE :
+    // Creation manuelle des donnees tant que le chargement
+    // CLIENTS.txt / COMMANDES.txt n'est pas disponible.
+    liste.creerDonneesTest();
 
-    fichier.close();
+    // Lancement du terminal de test.
+    lancerTerminal(liste);
 
     return 0;
 }

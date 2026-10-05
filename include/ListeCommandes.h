@@ -31,6 +31,9 @@ public:
 
     void sauvegarder(const std::string& fichierClients,
                      const std::string& fichierCommandes);
+
+    // TEMPORAIRE - uniquement pour les tests
+    void creerDonneesTest();
 };
 
 #endif
