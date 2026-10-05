@@ -1,0 +1,28 @@
+Alexandre Gagnon
+Émilie Tremblay
+Biscuit1 20
+Biscuit2 34
+&
+Émilie Tremblay
+Thomas Bouchard
+Biscuit1 10
+Biscuit2 10
+Biscuit3 10
+&
+Thomas Bouchard
+Camille Roy
+Biscuit1 15
+Biscuit2 25
+Biscuit3 10
+Biscuit4 5
+&
+Camille Roy
+Julien Fortin
+Biscuit1 10
+Biscuit2 20
+&
+Julien Fortin
+Alexandre Gagnon
+Biscuit1 10
+Biscuit2 15
+Biscuit3 10
