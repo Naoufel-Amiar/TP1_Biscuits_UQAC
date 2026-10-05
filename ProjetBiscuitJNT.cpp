@@ -8,7 +8,6 @@
 
 
 void crée_class_clients(){
-    std::cout << "\n===== TEST1 =====" << std::endl;
     std::ifstream fichier_client("data/CLIENTS.txt");
 
     std::string nom;
@@ -17,9 +16,6 @@ void crée_class_clients(){
 
     while (std::getline(fichier_client, nom)){
 
-        
-
-        //std::getline(fichier_client, nom);
         std::getline(fichier_client, numero_Rue);
         std::getline(fichier_client, rue);
 
@@ -27,10 +23,7 @@ void crée_class_clients(){
        
 
 
-        std::cout << "Client :" << std::endl;
-        std::cout << "Nom : " << client.getNom() << std::endl;
-        std::cout << "Numero rue : " << client.getNumeroRue() << std::endl;
-        std::cout << "Rue : " << client.getRue() << std::endl;
+  
 
         }
         fichier_client.close();
@@ -38,8 +31,6 @@ void crée_class_clients(){
 
 
 void  crée_class_commandes(){
-
-    std::cout << "\n===== TEST2 =====" << std::endl;
     std::ifstream fichier_commande("data/COMMANDES.txt");
     
     std::string Particulier;
@@ -64,23 +55,7 @@ void  crée_class_commandes(){
             numero_couki.push_back(biscuit);
             nombre_couki.push_back(quantite);
         }
-        Commandesclient commandesclient (Particulier, Vandeur, numero_couki, nombre_couki);
-
-        std::cout << "commandesclient :" << std::endl;
-        std::cout << "Particulier : " << commandesclient.getParticulier() << std::endl;
-        std::cout << "Vandeur: " << commandesclient.getVandeur() << std::endl;
-        std::cout << "numero_couki : ";
-        for (const std::string& numero : commandesclient.getnumero_couki())
-        {
-            std::cout << numero << " ";
-        }
-        std::cout << std::endl;
-        std::cout << "nombre_couki : ";
-        for (int nombre : commandesclient.getnombre_couki())
-        {
-            std::cout << nombre << " ";
-        }
-        std::cout << std::endl;
+        Commandesclient commandesclient (Particulier, Vandeur, numero_couki, nombre_couki); 
     }    
     fichier_commande.close();
 
