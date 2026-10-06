@@ -33,7 +33,7 @@ void Rm_Commande (Commande* Liste_Commandes){
     Commande* Ptr_Suivant = NULL;
 
     Ptr_Actuel = Liste_Commandes;
-    while (Ptr_Suivant != NULL){
+    while (Ptr_Actuel != NULL){
         Ptr_Suivant = Ptr_Actuel->suivant;
         Ptr_Actuel->Destinataire = NULL;
         Rm_Biscuit(Ptr_Actuel->Biscuit_suivant);

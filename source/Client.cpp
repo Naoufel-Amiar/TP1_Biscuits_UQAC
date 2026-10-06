@@ -1,6 +1,6 @@
 #include "Client.h"
 
-namespace std{
+using namespace std;
 
 Client* NewClient (string Name, int Num, string Rue){
     Client* Cl = new Client;
@@ -12,9 +12,10 @@ Client* NewClient (string Name, int Num, string Rue){
     return Cl;
 }
 
-void ADD_Client (Client* Liste_Clients, string Name, int Num, string Rue){
+void ADD_Client (Client* &Liste_Clients, string Name, int Num, string Rue){
     if (Liste_Clients == NULL){
         Liste_Clients = NewClient(Name, Num, Rue);
+        return;
     }
     Client* Ptr_Actuel;
     Ptr_Actuel = Liste_Clients;
@@ -25,7 +26,7 @@ void ADD_Client (Client* Liste_Clients, string Name, int Num, string Rue){
 }
 
 
-void DelListClient (Client* Liste_Clients){
+void DelListClient (Client* &Liste_Clients){
     Client* Actu;
     Client* suivant = NULL;
     Actu = Liste_Clients;
@@ -38,8 +39,6 @@ void DelListClient (Client* Liste_Clients){
 
 
 
-
-}
 
 
 

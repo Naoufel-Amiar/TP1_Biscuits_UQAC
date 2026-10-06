@@ -10,7 +10,7 @@ Commande* NewCommande (std::string Source, std::string Destinataire);
 
 void ADD_Commande (Commande* &Liste_Commandes, std::string Source, std::string Destinataire);
 
-void Rm_Commande (Commande* Liste_Commandes);
+void Rm_Commande (Commande* &Liste_Commandes);
 
 }
 

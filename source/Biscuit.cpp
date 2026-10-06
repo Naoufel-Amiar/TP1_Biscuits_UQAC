@@ -14,6 +14,7 @@ Biscuit* NewBiscuit (string Name, int Quantite){
 void ADD_Biscuit (Biscuit* &Liste_Biscuits, string Name, int Quantite){
     if (Liste_Biscuits == NULL){
         Liste_Biscuits = NewBiscuit(Name, Quantite);
+        return;
     }
     Biscuit* Ptr_Actuel;
     Ptr_Actuel = Liste_Biscuits;
