@@ -35,7 +35,7 @@ public:
     );
 
     // Gestion des commandes.
-    void ajouterCommande(
+    Commande* ajouterCommande(
         const std::string& source,
         const std::string& destinataire
     );

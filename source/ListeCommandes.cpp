@@ -89,10 +89,50 @@ void ListeCommandes::supprimerClient(const std::string& nom)
 }
 
 
-// Ajout commande
-void ListeCommandes::ajouterCommande()
+Commande* ListeCommandes::ajouterCommande(
+    const std::string& source,
+    const std::string& destinataire)
 {
-    // Sera adapte plus tard.
+    // Recherche du client qui effectue la commande.
+    Client* clientSource = trouverClient(source);
+
+    if (clientSource == nullptr)
+    {
+        std::cout << "Erreur : client source introuvable : "
+            << source << std::endl;
+
+        return nullptr;
+    }
+
+    // Creation de la nouvelle commande.
+    Commande* nouvelleCommande =
+        NewCommande(source, destinataire);
+
+    // Association avec le client destinataire.
+    nouvelleCommande->Destinataire =
+        trouverClient(destinataire);
+
+    // Premiere commande du client.
+    if (clientSource->CommandeAssociee == nullptr)
+    {
+        clientSource->CommandeAssociee =
+            nouvelleCommande;
+
+        return nouvelleCommande;
+    }
+
+    // Sinon, ajout a la fin de sa liste de commandes.
+    Commande* courant =
+        clientSource->CommandeAssociee;
+
+    while (courant->suivant != nullptr)
+    {
+        courant = courant->suivant;
+    }
+
+    courant->suivant = nouvelleCommande;
+
+    return nouvelleCommande;
 }
 
 
@@ -196,11 +236,16 @@ void ListeCommandes::charger(
 
     while (std::getline(commandes, expediteur))
     {
-        // Lecture du destinataire.
+        // Deuxieme ligne de la commande :
+        // nom du destinataire.
         if (!std::getline(commandes, destinataire))
         {
             break;
         }
+
+        // Creation de la commande dans la liste chainee.
+        Commande* commandeActuelle =
+            ajouterCommande(expediteur, destinataire);
 
         std::cout << "Commande :" << std::endl;
 
@@ -210,22 +255,60 @@ void ListeCommandes::charger(
         std::cout << "  Destinataire : "
             << destinataire << std::endl;
 
-        // Lecture des biscuits de cette commande.
+
+        // Lecture des biscuits jusqu'au caractere &
         while (commandes >> biscuit)
         {
-            // & = fin de la commande actuelle.
+            // & indique la fin de la commande.
             if (biscuit == "&")
             {
-                // On termine la ligne contenant &.
                 std::string finLigne;
                 std::getline(commandes, finLigne);
 
                 break;
             }
 
-            // Le mot lu est le type de biscuit.
-            // On lit ensuite sa quantite.
+            // Apres le nom du biscuit,
+            // le fichier contient sa quantite.
             commandes >> quantite;
+
+
+            // On ne peut ajouter les biscuits que si
+            // la commande a correctement ete creee.
+            if (commandeActuelle != nullptr)
+            {
+                Biscuit* nouveauBiscuit =
+                    NewBiscuit(biscuit, quantite);
+
+                // Association du biscuit avec sa commande.
+                nouveauBiscuit->commandeAssociee =
+                    commandeActuelle;
+
+
+                // Premier biscuit de la commande.
+                if (commandeActuelle->Biscuit_suivant == nullptr)
+                {
+                    commandeActuelle->Biscuit_suivant =
+                        nouveauBiscuit;
+                }
+                else
+                {
+                    // Recherche du dernier biscuit.
+                    Biscuit* biscuitCourant =
+                        commandeActuelle->Biscuit_suivant;
+
+                    while (biscuitCourant->suivant != nullptr)
+                    {
+                        biscuitCourant =
+                            biscuitCourant->suivant;
+                    }
+
+                    // Ajout a la fin de la liste.
+                    biscuitCourant->suivant =
+                        nouveauBiscuit;
+                }
+            }
+
 
             std::cout << "  - "
                 << biscuit
