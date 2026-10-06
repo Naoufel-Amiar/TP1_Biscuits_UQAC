@@ -42,10 +42,3 @@ void DelListClient (Client* &Liste_Clients){
     }
 }
 
-
-
-
-
-
-// Ce fichier pourra contenir des fonctions liees aux clients
-// si le projet en a besoin par la suite.
