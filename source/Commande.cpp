@@ -7,6 +7,7 @@ Commande* NewCommande (string Source, string Destinataire){
     Commande* Co = new Commande;
     Co->Source = Source;
     Co->destinataire = Destinataire;
+    co->suivant = NULL;
     Co->Biscuit_suivant = NULL;
     Co->Destinataire = NULL;
     return Co;
@@ -25,7 +26,7 @@ void ADD_Commande (Commande* &Liste_Commandes, string Source, string Destinatair
     Ptr_Actuel->suivant = NewCommande(Source, Destinataire);
 }
 
-void Rm_Commande (Commande* Liste_Commandes){
+void Rm_Commande (Commande* &Liste_Commandes){
     if (Liste_Commandes == NULL){
         return;
     }
@@ -40,6 +41,7 @@ void Rm_Commande (Commande* Liste_Commandes){
         Ptr_Actuel->Biscuit_suivant = NULL;
         delete Ptr_Actuel;
         Ptr_Actuel = Ptr_Suivant;
+        Liste_Commandes = NULL;
     }
         
 }
