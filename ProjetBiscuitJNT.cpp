@@ -10,5 +10,17 @@ int main()
     // Lecture des donnees depuis les fichiers texte.
     liste.charger("data/CLIENTS.txt", "data/COMMANDES.txt");
 
+
+    std::cout << std::endl;
+    std::cout << "===== TEST ? =====" << std::endl;
+
+    liste.afficherCommandes("Alexandre Gagnon");
+
+
+    std::cout << std::endl;
+    std::cout << "===== TEST $ =====" << std::endl;
+
+    liste.afficherBiscuitPopulaire();
+
     return 0;
 }

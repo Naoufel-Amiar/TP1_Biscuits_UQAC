@@ -135,26 +135,131 @@ Commande* ListeCommandes::ajouterCommande(
     return nouvelleCommande;
 }
 
-
-// Commande ? X
 void ListeCommandes::afficherCommandes(const std::string& nomClient)
 {
-    // Temporaire tant que les listes chainees finales
-    // ne sont pas integrees.
-    std::cout << "Affichage des commandes de : "
-        << nomClient << std::endl;
+    Client* client = trouverClient(nomClient);
+
+    if (client == nullptr)
+    {
+        std::cout << "Client introuvable." << std::endl;
+        return;
+    }
+
+    Commande* commande = client->CommandeAssociee;
+
+    if (commande == nullptr)
+    {
+        std::cout << "Aucune commande pour ce client." << std::endl;
+        return;
+    }
+
+    std::cout << "Commandes du client "
+        << nomClient
+        << " :"
+        << std::endl;
+
+    while (commande != nullptr)
+    {
+        std::cout << "Destinataire : "
+            << commande->destinataire
+            << std::endl;
+
+        Biscuit* biscuit = commande->Biscuit_suivant;
+
+        while (biscuit != nullptr)
+        {
+            std::cout << "  - "
+                << biscuit->nom
+                << " : "
+                << biscuit->quantite
+                << std::endl;
+
+            biscuit = biscuit->suivant;
+        }
+
+        commande = commande->suivant;
+    }
 }
 
 
-// Commande $
 void ListeCommandes::afficherBiscuitPopulaire()
 {
-    // Temporaire tant que les listes chainees finales
-    // ne sont pas integrees.
-    std::cout << "Calcul du biscuit populaire." << std::endl;
+    std::string typePopulaire = "";
+    int quantiteMax = 0;
+
+    Client* client = premierClient;
+
+    while (client != nullptr)
+    {
+        Commande* commande = client->CommandeAssociee;
+
+        while (commande != nullptr)
+        {
+            Biscuit* biscuit = commande->Biscuit_suivant;
+
+            while (biscuit != nullptr)
+            {
+                std::string typeRecherche = biscuit->nom;
+                int total = 0;
+
+                Client* clientRecherche = premierClient;
+
+                while (clientRecherche != nullptr)
+                {
+                    Commande* commandeRecherche =
+                        clientRecherche->CommandeAssociee;
+
+                    while (commandeRecherche != nullptr)
+                    {
+                        Biscuit* biscuitRecherche =
+                            commandeRecherche->Biscuit_suivant;
+
+                        while (biscuitRecherche != nullptr)
+                        {
+                            if (biscuitRecherche->nom == typeRecherche)
+                            {
+                                total += biscuitRecherche->quantite;
+                            }
+
+                            biscuitRecherche = biscuitRecherche->suivant;
+                        }
+
+                        commandeRecherche = commandeRecherche->suivant;
+                    }
+
+                    clientRecherche = clientRecherche->suivant;
+                }
+
+                if (total > quantiteMax)
+                {
+                    quantiteMax = total;
+                    typePopulaire = typeRecherche;
+                }
+
+                biscuit = biscuit->suivant;
+            }
+
+            commande = commande->suivant;
+        }
+
+        client = client->suivant;
+    }
+
+    if (typePopulaire == "")
+    {
+        std::cout << "Aucun biscuit vendu." << std::endl;
+        return;
+    }
+
+    std::cout << "Biscuit le plus populaire : "
+        << typePopulaire << std::endl;
+
+    std::cout << "Quantite totale : "
+        << quantiteMax << std::endl;
+
+    std::cout << "Montant total recu : "
+        << quantiteMax << " $" << std::endl;
 }
-
-
 void ListeCommandes::charger(
     const std::string& fichierClients,
     const std::string& fichierCommandes)
