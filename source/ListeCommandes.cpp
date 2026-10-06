@@ -304,16 +304,16 @@ void ListeCommandes::charger(
 
         ajouterClient(
             nom,
-            std::stoi(numero),
+            stoi(numero),
             rue
         );
 
         cout << "Client : "
-            << nom << std::endl;
+            << nom << endl;
 
         cout << "Adresse : "
             << numero << " "
-            << rue << std::endl;
+            << rue << endl;
 
         cout << "------------------------"
             << std::endl;
