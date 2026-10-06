@@ -9,6 +9,8 @@
 #include <fstream>
 
 
+using namespace std;
+
 // Constructeur
 ListeCommandes::ListeCommandes()
 {

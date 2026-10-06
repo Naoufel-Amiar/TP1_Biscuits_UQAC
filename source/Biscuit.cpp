@@ -24,7 +24,7 @@ void ADD_Biscuit (Biscuit* &Liste_Biscuits, string Name, int Quantite){
     Ptr_Actuel->suivant = NewBiscuit(Name, Quantite);
 }
 
-void Rm_Biscuit (Biscuit* Liste_Biscuits){
+void Rm_Biscuit (Biscuit* &Liste_Biscuits){
     if (Liste_Biscuits == NULL){
         return;
     }
