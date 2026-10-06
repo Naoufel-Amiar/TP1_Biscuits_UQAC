@@ -7,7 +7,7 @@ Commande* NewCommande (string Source, string Destinataire){
     Commande* Co = new Commande;
     Co->Source = Source;
     Co->destinataire = Destinataire;
-    co->suivant = NULL;
+    Co->suivant = NULL;
     Co->Biscuit_suivant = NULL;
     Co->Destinataire = NULL;
     return Co;
