@@ -11,13 +11,16 @@ struct Biscuit
     Biscuit* suivant;
 };
 
+
+
+/*
 class Clients
 {
 
     std::string Nom;
     std::string numero_Rue;
     std::string Rue;
-    
+
 public:
     Clients (std::string Nom, std::string numero_Rue, std::string Rue) :
         Nom(Nom),
@@ -41,6 +44,10 @@ public:
         return Rue;
     }
 };
+
+*/
+
+
 
 
 #endif
