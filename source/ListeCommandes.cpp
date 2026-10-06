@@ -3,19 +3,22 @@
 #include <iostream>
 #include <fstream>
 
+
+// Constructeur
 ListeCommandes::ListeCommandes()
 {
     premierClient = nullptr;
 }
 
 
+// Destructeur
 ListeCommandes::~ListeCommandes()
 {
-    // TODO : liberer toute la liste des clients et leurs commandes.
+    // Sera complete avec les listes chainees finales.
 }
 
 
-// Recherche un client dans la liste chainee a partir de son nom.
+// Recherche d'un client
 Client* ListeCommandes::trouverClient(const std::string& nom)
 {
     Client* courant = premierClient;
@@ -34,192 +37,188 @@ Client* ListeCommandes::trouverClient(const std::string& nom)
 }
 
 
+// Liberation des biscuits
 void ListeCommandes::libererBiscuits(Biscuit* biscuit)
 {
-    // TODO
+    // Sera complete plus tard.
 }
 
 
+// Liberation des commandes
 void ListeCommandes::libererCommandes(Commande* commande)
 {
-    // TODO
+    // Sera complete plus tard.
 }
 
 
-void ListeCommandes::ajouterClient(const std::string& nom,
+// Ajout client
+void ListeCommandes::ajouterClient(
+    const std::string& nom,
     int numero,
     const std::string& rue)
 {
-    // TODO
+    // Sera adapte a la liste chainee finale.
 }
 
 
+// Suppression client
 void ListeCommandes::supprimerClient(const std::string& nom)
 {
-    // TODO
+    // Sera adapte plus tard.
 }
 
 
+// Ajout commande
 void ListeCommandes::ajouterCommande()
 {
-    // TODO
+    // Sera adapte plus tard.
 }
 
 
-// ---------------------------------------------------------
-// COMMANDE ? X
-//
-// Affiche toutes les commandes effectuees par le client X.
-// ---------------------------------------------------------
+// Commande ? X
 void ListeCommandes::afficherCommandes(const std::string& nomClient)
 {
-    // Recherche du client demande.
-    Client* client = trouverClient(nomClient);
-
-    // Le client n'existe pas dans la liste.
-    if (client == nullptr)
-    {
-        std::cout << "Client introuvable." << std::endl;
-        return;
-    }
-
-    // Recuperation de la premiere commande du client.
-    Commande* commande = client->premiereCommande;
-
-    // Le client existe mais n'a passe aucune commande.
-    if (commande == nullptr)
-    {
-        std::cout << "Aucune commande pour ce client." << std::endl;
-        return;
-    }
-
-    std::cout << "Commandes du client "
-        << nomClient
-        << " :"
-        << std::endl;
-
-    // Parcours de toutes les commandes du client.
-    while (commande != nullptr)
-    {
-        std::cout << "Destinataire : "
-            << commande->destinataire
-            << std::endl;
-
-        // Recuperation du premier biscuit de la commande.
-        Biscuit* biscuit = commande->premierBiscuit;
-
-        // Parcours de tous les biscuits de cette commande.
-        while (biscuit != nullptr)
-        {
-            std::cout << biscuit->type
-                << " "
-                << biscuit->quantite
-                << std::endl;
-
-            biscuit = biscuit->suivant;
-        }
-
-        commande = commande->suivante;
-    }
+    // Temporaire tant que les listes chainees finales
+    // ne sont pas integrees.
+    std::cout << "Affichage des commandes de : "
+        << nomClient << std::endl;
 }
 
 
-// ---------------------------------------------------------
-// COMMANDE $
-//
-// Recherche le type de biscuit le plus populaire et affiche
-// le montant total recu pour ce type de biscuit.
-// ---------------------------------------------------------
+// Commande $
 void ListeCommandes::afficherBiscuitPopulaire()
 {
-    std::string typePopulaire = "";
-    int quantiteMax = 0;
+    // Temporaire tant que les listes chainees finales
+    // ne sont pas integrees.
+    std::cout << "Calcul du biscuit populaire." << std::endl;
+}
 
-    Client* client = premierClient;
 
-    // Premier parcours :
-    // on examine chaque type de biscuit existant.
-    while (client != nullptr)
+void ListeCommandes::charger(
+    const std::string& fichierClients,
+    const std::string& fichierCommandes)
+{
+    // =====================================================
+    // CHARGEMENT DES CLIENTS
+    // =====================================================
+
+    std::ifstream clients(fichierClients);
+
+    if (!clients.is_open())
     {
-        Commande* commande = client->premiereCommande;
-
-        while (commande != nullptr)
-        {
-            Biscuit* biscuit = commande->premierBiscuit;
-
-            while (biscuit != nullptr)
-            {
-                std::string typeRecherche = biscuit->type;
-                int total = 0;
-
-                // Deuxieme parcours :
-                // on calcule la quantite totale de ce type
-                // dans toutes les commandes.
-                Client* clientRecherche = premierClient;
-
-                while (clientRecherche != nullptr)
-                {
-                    Commande* commandeRecherche =
-                        clientRecherche->premiereCommande;
-                    while (commandeRecherche != nullptr)
-                    {
-                        Biscuit* biscuitRecherche =
-                            commandeRecherche->premierBiscuit;
-
-                        while (biscuitRecherche != nullptr)
-                        {
-                            if (biscuitRecherche->type == typeRecherche)
-                            {
-                                total += biscuitRecherche->quantite;
-                            }
-                            biscuitRecherche = biscuitRecherche->suivant;
-                        }
-                        commandeRecherche = commandeRecherche->suivante;
-                    }
-                    clientRecherche = clientRecherche->suivant;
-                }
-                // Nouveau maximum trouve.
-                if (total > quantiteMax)
-                {
-                    quantiteMax = total;
-                    typePopulaire = typeRecherche;
-                }
-                biscuit = biscuit->suivant;
-            }
-            commande = commande->suivante;
-        }
-        client = client->suivant;
-    }
-    if (typePopulaire == "")
-    {
-        std::cout << "Aucun biscuit vendu." << std::endl;
+        std::cout << "Erreur : impossible d'ouvrir "
+            << fichierClients << std::endl;
         return;
     }
 
-    std::cout << "Biscuit le plus populaire : "
-        << typePopulaire
+    std::string nom;
+    std::string numero;
+    std::string rue;
+
+    std::cout << "===== CHARGEMENT DES CLIENTS ====="
         << std::endl;
 
-    std::cout << "Quantite totale : "
-        << quantiteMax
+    while (std::getline(clients, nom))
+    {
+        if (!std::getline(clients, numero))
+        {
+            break;
+        }
+
+        if (!std::getline(clients, rue))
+        {
+            break;
+        }
+
+        std::cout << "Client : "
+            << nom << std::endl;
+
+        std::cout << "Adresse : "
+            << numero << " "
+            << rue << std::endl;
+
+        std::cout << "------------------------"
+            << std::endl;
+    }
+
+    clients.close();
+
+
+    // =====================================================
+    // CHARGEMENT DES COMMANDES
+    // =====================================================
+
+    std::ifstream commandes(fichierCommandes);
+
+    if (!commandes.is_open())
+    {
+        std::cout << "Erreur : impossible d'ouvrir "
+            << fichierCommandes << std::endl;
+        return;
+    }
+
+    std::string expediteur;
+    std::string destinataire;
+
+    std::string biscuit;
+    int quantite;
+
+    std::cout << std::endl;
+    std::cout << "===== CHARGEMENT DES COMMANDES ====="
         << std::endl;
 
-    std::cout << "Montant total recu : "
-        << quantiteMax
-        << " $"
-        << std::endl;
+    while (std::getline(commandes, expediteur))
+    {
+        // Lecture du destinataire.
+        if (!std::getline(commandes, destinataire))
+        {
+            break;
+        }
+
+        std::cout << "Commande :" << std::endl;
+
+        std::cout << "  Expediteur : "
+            << expediteur << std::endl;
+
+        std::cout << "  Destinataire : "
+            << destinataire << std::endl;
+
+        // Lecture des biscuits de cette commande.
+        while (commandes >> biscuit)
+        {
+            // & = fin de la commande actuelle.
+            if (biscuit == "&")
+            {
+                // On termine la ligne contenant &.
+                std::string finLigne;
+                std::getline(commandes, finLigne);
+
+                break;
+            }
+
+            // Le mot lu est le type de biscuit.
+            // On lit ensuite sa quantite.
+            commandes >> quantite;
+
+            std::cout << "  - "
+                << biscuit
+                << " : "
+                << quantite
+                << std::endl;
+        }
+
+        std::cout << "------------------------"
+            << std::endl;
+    }
+
+    commandes.close();
 }
 
 
-void ListeCommandes::charger(const std::string& fichierClients,
+// Sauvegarde
+void ListeCommandes::sauvegarder(
+    const std::string& fichierClients,
     const std::string& fichierCommandes)
 {
-    // TODO
-}
-
-
-void ListeCommandes::sauvegarder(const std::string& fichierClients,
-    const std::string& fichierCommandes)
-{
-    // TODO
+    // Sera complete plus tard.
 }

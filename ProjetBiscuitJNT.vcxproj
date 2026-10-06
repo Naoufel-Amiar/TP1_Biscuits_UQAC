@@ -128,7 +128,6 @@
     <ClCompile Include="source\Client.cpp" />
     <ClCompile Include="source\Commande.cpp" />
     <ClCompile Include="source\ListeCommandes.cpp" />
-    <ClCompile Include="source\TestAffichage.cpp" />
     <ClCompile Include="Terminal.cpp" />
   </ItemGroup>
   <ItemGroup>
