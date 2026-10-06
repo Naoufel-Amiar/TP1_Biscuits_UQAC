@@ -12,13 +12,13 @@ struct Client
     int numero;
     string Rue;
 
-    Commande* premiereCommande;
+    Commande* CommandeAssociee;
     Client* suivant;
 };
 
 Client* NewClient (string Name, int Num, string Rue); //Création des maillons un a un, ne pas appeler
 
-void ADD (Client* Liste_Clients, string Name, int Num, string Rue); //Création de la Liste Chainée des Clients,
+void ADD_Client (Client* Liste_Clients, string Name, int Num, string Rue); //Création de la Liste Chainée des Clients,
 
 void DelListClient (Client* Liste_Clients); //destruction de la Liste Chainée
 

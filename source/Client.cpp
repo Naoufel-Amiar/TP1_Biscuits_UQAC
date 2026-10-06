@@ -12,7 +12,7 @@ Client* NewClient (string Name, int Num, string Rue){
     return Cl;
 }
 
-void ADD (Client* Liste_Clients, string Name, int Num, string Rue){
+void ADD_Client (Client* Liste_Clients, string Name, int Num, string Rue){
     if (Liste_Clients == NULL){
         Liste_Clients = NewClient(Name, Num, Rue);
     }
@@ -30,7 +30,6 @@ void DelListClient (Client* Liste_Clients){
     Client* suivant = NULL;
     Actu = Liste_Clients;
     while (Actu != NULL){
-
             suivant = Actu->suivant;
             delete Actu;
             Actu = suivant;
