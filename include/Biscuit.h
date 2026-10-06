@@ -13,4 +13,15 @@ void ADD_Biscuit (Biscuit* &Liste_Biscuits, std::string Name, int Quantite);
 void Rm_Biscuit (Biscuit* &Liste_Biscuits);
 
 
+void ADD_Biscuit(
+    Biscuit* Liste_Biscuits,
+    std::string Name,
+    int Quantite
+);
+
+
+void Rm_Biscuit(
+    Biscuit* Liste_Biscuits
+);
+
 #endif

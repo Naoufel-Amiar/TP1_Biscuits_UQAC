@@ -2,8 +2,10 @@
 
 using namespace std;
 
-Client* NewClient (string Name, int Num, string Rue){
+Client* NewClient(std::string Name, int Num, std::string Rue)
+{
     Client* Cl = new Client;
+
     Cl->nom = Name;
     Cl->numero = Num;
     Cl->Rue = Rue;
@@ -17,11 +19,14 @@ void ADD_Client (Client* &Liste_Clients, string Name, int Num, string Rue){
         Liste_Clients = NewClient(Name, Num, Rue);
         return;
     }
-    Client* Ptr_Actuel;
-    Ptr_Actuel = Liste_Clients;
-    while (Ptr_Actuel->suivant != NULL){
+
+    Client* Ptr_Actuel = Liste_Clients;
+
+    while (Ptr_Actuel->suivant != nullptr)
+    {
         Ptr_Actuel = Ptr_Actuel->suivant;
     }
+
     Ptr_Actuel->suivant = NewClient(Name, Num, Rue);
 }
 
