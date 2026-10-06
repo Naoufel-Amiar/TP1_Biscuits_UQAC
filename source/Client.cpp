@@ -7,7 +7,7 @@ Client* NewClient (string Name, int Num, string Rue){
     Cl->nom = Name;
     Cl->numero = Num;
     Cl->Rue = Rue;
-    Cl->premiereCommande = NULL;
+    Cl->CommandeAssociee = NULL;
     Cl->suivant = NULL;
     return Cl;
 }

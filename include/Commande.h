@@ -1,20 +1,17 @@
 #ifndef COMMANDE_H
 #define COMMANDE_H
 
-#include "Client.h"
-#include "Biscuit.h"
-
+#include "Structures.h"
 #include <string>
 
-struct Commande
-{
-    std::string Source;
-    std::string destinataire;
+namespace std{
 
-    Biscuit* Biscuit_suivant;
-    Client* Destinataire;
-    Commande* suivant;
-};
+Commande* NewCommande (string Source, string Destinataire);
 
+void ADD_Commande (Commande* Liste_Commandes, string Source, string Destinataire);
+
+void Rm_Commande (Commande* Liste_Commandes);
+
+}
 
 #endif
