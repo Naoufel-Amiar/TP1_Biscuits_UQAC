@@ -1,24 +1,28 @@
-Tremblay
-Gagnon
-Chocolat 5
-Vanille 2
+Alexandre Gagnon
+Émilie Tremblay
+Biscuit1 20
+Biscuit2 34
 &
-Tremblay
-Bouchard
-Chocolat 3
-Erable 4
+Émilie Tremblay
+Thomas Bouchard
+Biscuit1 10
+Biscuit2 10
+Biscuit3 10
 &
-Gagnon
-Fortin
-Vanille 10
-Chocolat 1
+Thomas Bouchard
+Camille Roy
+Biscuit1 15
+Biscuit2 25
+Biscuit3 10
+Biscuit4 5
 &
-Bouchard
-Tremblay
-Erable 6
-Vanille 3
+Camille Roy
+Julien Fortin
+Biscuit1 10
+Biscuit2 20
 &
-Fortin
-Fortin
-Chocolat 4
-&
+Julien Fortin
+Alexandre Gagnon
+Biscuit1 10
+Biscuit2 15
+Biscuit3 10
