@@ -13,4 +13,3 @@ void DelListClient (Client* &Liste_Clients); //destruction de la Liste Chainée
 
 
 #endif
-//klsdnjsvscnjgsdhvjcbgjfgjdfg
