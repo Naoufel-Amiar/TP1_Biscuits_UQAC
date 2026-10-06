@@ -3,13 +3,14 @@
 
 #include <string>
 
-namespace std{
+struct Commande;
+struct Biscuit;
 
 struct Client
 {
-    string nom;
+    std::string nom;
     int numero;
-    string Rue;
+    std::string Rue;
 
     Commande* CommandeAssociee;
     Client* suivant;
@@ -17,8 +18,8 @@ struct Client
 
 struct Commande
 {
-    string Source;
-    string destinataire;
+    std::string Source;
+    std::string destinataire;
 
     Biscuit* Biscuit_suivant;
     Client* Destinataire;
@@ -27,7 +28,7 @@ struct Commande
 
 struct Biscuit
 {
-    string nom;
+    std::string nom;
     int quantite;
     
     Commande* commandeAssociee;
@@ -35,7 +36,6 @@ struct Biscuit
 };
 
 
-}
 
 
 
