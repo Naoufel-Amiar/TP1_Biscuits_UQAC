@@ -96,8 +96,8 @@ void ListeCommandes::supprimerClient(const std::string& nom)
 
 
 Commande* ListeCommandes::ajouterCommande(
-    const std::string& source,
-    const std::string& destinataire)
+    const string& source,
+    const string& destinataire)
 {
     // Recherche du client qui effectue la commande.
     Client* clientSource = trouverClient(source);
@@ -308,14 +308,14 @@ void ListeCommandes::charger(
             rue
         );
 
-        std::cout << "Client : "
+        cout << "Client : "
             << nom << std::endl;
 
-        std::cout << "Adresse : "
+        cout << "Adresse : "
             << numero << " "
             << rue << std::endl;
 
-        std::cout << "------------------------"
+        cout << "------------------------"
             << std::endl;
     }
 
