@@ -1,5 +1,9 @@
 #include "ListeCommandes.h"
 #include "Commande.h"
+#include "Client.h"
+#include "Biscuit.h"
+#include "Structures.h"
+
 
 #include <iostream>
 #include <fstream>
