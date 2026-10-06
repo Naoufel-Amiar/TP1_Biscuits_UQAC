@@ -2,7 +2,25 @@
 #define BISCUIT_H
 
 #include <string>
-#include <vector>
+
+
+
+class parfum_nombre {
+    public:
+    std::string type;
+    int quantite;
+    parfum_nombre* suivant;
+
+    
+    parfum_nombre(std::string t, int q) : 
+    type(t), 
+    quantite(q), 
+    suivant(nullptr) 
+    {
+    }
+};
+
+
 
 struct Biscuit
 {
@@ -42,20 +60,21 @@ public:
     }
 };
 
+
+
 class Commandesclient
 {
 private:
+
     std::string Particulier;
     std::string Vandeur;
-    std::vector<std::string> numero_couki;
-    std::vector<int> nombre_couki;
-public:
+    parfum_nombre* tete;        // Pour lachichage il faux le mettre en public 
 
-    Commandesclient (std::string Particulier, std::string Vandeur, std::vector<std::string> numero_couki, std::vector<int> nombre_couki) :
+public:
+    Commandesclient (std::string Particulier, std::string Vandeur, parfum_nombre* TETE) :
         Particulier(Particulier),
         Vandeur(Vandeur),
-        numero_couki(numero_couki),
-        nombre_couki(nombre_couki)
+        tete(TETE)
     {
     }
     std::string getParticulier()
@@ -67,18 +86,19 @@ public:
     {
         return Vandeur;
     }
-
-    std::vector<std::string> getnumero_couki()
+/*
+    std::string getnumero_couki()
     {
         return numero_couki;
     }
     
-    std::vector<int> getnombre_couki()
+    std::<int> getnombre_couki()
     {
         return nombre_couki;
     }
-
+*/
 };
+
 
 
 #endif
