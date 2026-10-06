@@ -50,14 +50,35 @@ void ListeCommandes::libererCommandes(Commande* commande)
     // Sera complete plus tard.
 }
 
-
-// Ajout client
 void ListeCommandes::ajouterClient(
     const std::string& nom,
     int numero,
     const std::string& rue)
 {
-    // Sera adapte a la liste chainee finale.
+    // Creation du nouveau maillon Client.
+    Client* nouveauClient = NewClient(nom, numero, rue);
+
+    // Cas 1 : la liste est vide.
+    // Le nouveau client devient la tete de la liste.
+    if (premierClient == nullptr)
+    {
+        premierClient = nouveauClient;
+        return;
+    }
+
+    // Cas 2 : la liste contient deja des clients.
+    // On se place sur la tete.
+    Client* courant = premierClient;
+
+    // On avance jusqu'au dernier client.
+    while (courant->suivant != nullptr)
+    {
+        courant = courant->suivant;
+    }
+
+    // Le dernier client pointe maintenant
+    // vers le nouveau client.
+    courant->suivant = nouveauClient;
 }
 
 
@@ -129,6 +150,12 @@ void ListeCommandes::charger(
         {
             break;
         }
+
+        ajouterClient(
+            nom,
+            std::stoi(numero),
+            rue
+        );
 
         std::cout << "Client : "
             << nom << std::endl;
