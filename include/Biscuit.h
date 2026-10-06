@@ -2,83 +2,40 @@
 #define BISCUIT_H
 
 #include <string>
-#include <vector>
+
+struct Commande;
 
 struct Biscuit
 {
-    std::string type;
+    // Nom/type du biscuit.
+    std::string nom;
+
+    // Quantite commandee.
     int quantite;
+
+    // Commande a laquelle appartient le biscuit.
+    Commande* commandeAssociee;
+
+    // Biscuit suivant dans la liste chainee.
     Biscuit* suivant;
 };
 
-class Clients
-{
 
-    std::string Nom;
-    std::string numero_Rue;
-    std::string Rue;
-    
-public:
-    Clients (std::string Nom, std::string numero_Rue, std::string Rue) :
-        Nom(Nom),
-        numero_Rue(numero_Rue),
-        Rue(Rue)
-    {
-    }
+Biscuit* NewBiscuit(
+    std::string Name,
+    int Quantite
+);
 
-    std::string getNom()
-    {
-        return Nom;
-    }
 
-    std::string getNumeroRue()
-    {
-        return numero_Rue;
-    }
+void ADD_Biscuit(
+    Biscuit* Liste_Biscuits,
+    std::string Name,
+    int Quantite
+);
 
-    std::string getRue()
-    {
-        return Rue;
-    }
-};
 
-class Commandesclient
-{
-private:
-    std::string Particulier;
-    std::string Vandeur;
-    std::vector<std::string> numero_couki;
-    std::vector<int> nombre_couki;
-public:
-
-    Commandesclient (std::string Particulier, std::string Vandeur, std::vector<std::string> numero_couki, std::vector<int> nombre_couki) :
-        Particulier(Particulier),
-        Vandeur(Vandeur),
-        numero_couki(numero_couki),
-        nombre_couki(nombre_couki)
-    {
-    }
-    std::string getParticulier()
-    {
-        return Particulier;
-    }
-
-    std::string getVandeur()
-    {
-        return Vandeur;
-    }
-
-    std::vector<std::string> getnumero_couki()
-    {
-        return numero_couki;
-    }
-    
-    std::vector<int> getnombre_couki()
-    {
-        return nombre_couki;
-    }
-
-};
-
+void Rm_Biscuit(
+    Biscuit* Liste_Biscuits
+);
 
 #endif

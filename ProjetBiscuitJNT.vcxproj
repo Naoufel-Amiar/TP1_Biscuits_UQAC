@@ -125,6 +125,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ProjetBiscuitJNT.cpp" />
+    <ClCompile Include="source\Biscuit.cpp" />
     <ClCompile Include="source\Client.cpp" />
     <ClCompile Include="source\Commande.cpp" />
     <ClCompile Include="source\ListeCommandes.cpp" />

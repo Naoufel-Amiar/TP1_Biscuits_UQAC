@@ -4,20 +4,29 @@
 #include <string>
 #include "Commande.h"
 
-
 struct Client
 {
     std::string nom;
     int numero;
     std::string Rue;
 
-    Commande* premiereCommande;
+    Commande* CommandeAssociee;
     Client* suivant;
 };
 
-Client* NewClient (std::string Name, int Num, std::string Rue); //Création des maillons un a un, ne pas appeler
+Client* NewClient(
+    std::string Name,
+    int Num,
+    std::string Rue
+);
 
-void ADD (Client* Liste_Clients, std::string Name, int Num, std::string Rue); //Création de la Liste Chainée des Clients,
+void ADD_Client(
+    Client* Liste_Clients,
+    std::string Name,
+    int Num,
+    std::string Rue
+);
 
-void DelListClient (Client* Liste_Clients); //destruction de la Liste Chainée
+void DelListClient(Client* Liste_Clients);
+
 #endif

@@ -7,30 +7,58 @@
 class ListeCommandes
 {
 private:
+
+    // Tete de la liste chainee des clients.
     Client* premierClient;
 
+    // Recherche un client par son nom.
     Client* trouverClient(const std::string& nom);
+
+    // Liberation memoire.
     void libererBiscuits(Biscuit* biscuit);
     void libererCommandes(Commande* commande);
 
 public:
+
     ListeCommandes();
     ~ListeCommandes();
 
-    void ajouterClient(const std::string& nom, int numero, const std::string& rue);
-    void supprimerClient(const std::string& nom);
+    // Gestion des clients.
+    void ajouterClient(
+        const std::string& nom,
+        int numero,
+        const std::string& rue
+    );
 
-    // TODO : definir les parametres necessaires pour l'ajout d'une commande.
-    void ajouterCommande();
+    void supprimerClient(
+        const std::string& nom
+    );
 
-    void afficherCommandes(const std::string& nomClient);
+    // Gestion des commandes.
+    void ajouterCommande(
+        const std::string& source,
+        const std::string& destinataire
+    );
+
+    // Commande ? X
+    void afficherCommandes(
+        const std::string& nomClient
+    );
+
+    // Commande $
     void afficherBiscuitPopulaire();
 
-    void charger(const std::string& fichierClients,
-                 const std::string& fichierCommandes);
+    // Chargement depuis les fichiers texte.
+    void charger(
+        const std::string& fichierClients,
+        const std::string& fichierCommandes
+    );
 
-    void sauvegarder(const std::string& fichierClients,
-                     const std::string& fichierCommandes);
+    // Sauvegarde dans les fichiers texte.
+    void sauvegarder(
+        const std::string& fichierClients,
+        const std::string& fichierCommandes
+    );
 };
 
 #endif
