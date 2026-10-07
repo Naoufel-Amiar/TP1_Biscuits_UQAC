@@ -228,7 +228,8 @@ void TransTerminal::executer(
 
         else if (operation == "#")
         {
-            std::cout << liste.Chiffre_affaire() << "$" << std::endl;
+            std::cout << "\n===== TRANSACTION # ====="<< std::endl;
+            std::cout << liste.Chiffre_affaire() << "CAD" << std::endl;
         }
 
         else
