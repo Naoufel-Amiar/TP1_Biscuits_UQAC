@@ -15,8 +15,8 @@ private:
     Client* trouverClient(const std::string& nom);
 
     // Liberation memoire.
-    void libererBiscuits(Biscuit* biscuit);
-    void libererCommandes(Commande* commande);
+    void libererBiscuits(Biscuit* &Liste_biscuit);
+    void libererCommandes(Commande* &Liste_Commandes);
 
 public:
 

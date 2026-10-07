@@ -78,9 +78,9 @@ Client* ListeCommandes::trouverClient(
 // LIBERATION DES BISCUITS
 // =====================================================
 
-void ListeCommandes::libererBiscuits(Biscuit* biscuit)
+void ListeCommandes::libererBiscuits(Biscuit* &Liste_biscuit)
 {
-    // Sera complete plus tard.
+    Rm_Biscuit(Liste_biscuit);
 }
 
 
@@ -88,9 +88,9 @@ void ListeCommandes::libererBiscuits(Biscuit* biscuit)
 // LIBERATION DES COMMANDES
 // =====================================================
 
-void ListeCommandes::libererCommandes(Commande* commande)
+void ListeCommandes::libererCommandes(Commande* &Liste_Commandes)
 {
-    // Sera complete plus tard.
+    Rm_Commande(Liste_Commandes);
 }
 
 
