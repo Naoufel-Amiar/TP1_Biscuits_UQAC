@@ -121,44 +121,56 @@ void ListeCommandes::ajouterClient(
 // Commande : - X
 // =====================================================
 
-void ListeCommandes::supprimerClient(const std::string& nom)
+void ListeCommandes::supprimerClient(
+    const std::string& nom)
 {
-    Client* suivant = nullptr;
-    Client* courant = premierClient;
-    Client* precedent = nullptr;
+    Client* courant = trouverClient(nom);
 
-    while (courant != nullptr && courant->nom != nom)
-    {
-        precedent = courant;
-        courant = courant->suivant;
-    }
-
-    // Le client n'existe pas (ou la liste est vide).
     if (courant == nullptr)
     {
-        std::cout << "Client introuvable." << std::endl;
+        std::cout
+            << "Client introuvable."
+            << std::endl;
+
         return;
     }
 
-    suivant = courant->suivant;
+    // Recherche du maillon précédent.
+    Client* precedent = nullptr;
+    Client* recherche = premierClient;
 
-    // Raccordement des maillons de façon sécurisée
+    while (recherche != nullptr &&
+           recherche != courant)
+    {
+        precedent = recherche;
+        recherche = recherche->suivant;
+    }
+
+    // On conserve le maillon suivant.
+    Client* suivant = courant->suivant;
+
+    // Raccordement de la liste chaînée.
     if (precedent == nullptr)
     {
-        // Le client à supprimer est le premier de la liste
         premierClient = suivant;
     }
     else
     {
-        // Le client est au milieu ou à la fin
         precedent->suivant = suivant;
     }
 
-    // Suppression de toutes les commandes appartenant au client.
-    Rm_Commande(courant->CommandeAssociee);
+    // Suppression des commandes du client.
+    Rm_Commande(
+        courant->CommandeAssociee
+    );
+
+    // Suppression du client.
     delete courant;
 
-    std::cout << "Client supprime : " << nom << std::endl;
+    std::cout
+        << "Client supprime : "
+        << nom
+        << std::endl;
 }
 
 
