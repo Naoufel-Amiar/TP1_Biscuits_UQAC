@@ -60,6 +60,10 @@ public:
         const std::string& fichierCommandes
     );
 
+    void afficherChiffreAffaires(
+        const std::string& nomClient
+    );
+
     // Sauvegarde dans les fichiers texte.
     void sauvegarder(
         const std::string& fichierClients,

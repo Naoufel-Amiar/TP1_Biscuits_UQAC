@@ -5,9 +5,7 @@
 #include <string>
 
 
-// =====================================================
 // CONSTRUCTEUR
-// =====================================================
 
 TransTerminal::TransTerminal(
     ListeCommandes& listeCommandes)
@@ -16,9 +14,7 @@ TransTerminal::TransTerminal(
 }
 
 
-// =====================================================
 // EXECUTION DU FICHIER DE TRANSACTIONS
-// =====================================================
 
 void TransTerminal::executer(
     const std::string& fichierTransactions)
@@ -42,10 +38,9 @@ void TransTerminal::executer(
     // Lecture des operations jusqu'a la fin du fichier.
     while (fichier >> operation)
     {
-        // =================================================
         // O : OUVERTURE DES FICHIERS
         // O CLIENTS COMMANDES
-        // =================================================
+
 
         if (operation == "O")
         {
@@ -67,10 +62,8 @@ void TransTerminal::executer(
         }
 
 
-        // =================================================
         // S : SAUVEGARDE
         // S CLIENTS COMMANDES
-        // =================================================
 
         else if (operation == "S")
         {
@@ -92,10 +85,8 @@ void TransTerminal::executer(
         }
 
 
-        // =================================================
         // + : AJOUT D'UN CLIENT
         // + C N A
-        // =================================================
 
         else if (operation == "+")
         {
@@ -125,10 +116,8 @@ void TransTerminal::executer(
         }
 
 
-        // =================================================
         // - : SUPPRESSION D'UN CLIENT
         // - X
-        // =================================================
 
         else if (operation == "-")
         {
@@ -146,10 +135,8 @@ void TransTerminal::executer(
         }
 
 
-        // =================================================
         // ? : AFFICHAGE DES COMMANDES D'UN CLIENT
         // ? X
-        // =================================================
 
         else if (operation == "?")
         {
@@ -167,9 +154,7 @@ void TransTerminal::executer(
         }
 
 
-        // =================================================
         // $ : BISCUIT LE PLUS POPULAIRE
-        // =================================================
 
         else if (operation == "$")
         {
@@ -181,11 +166,9 @@ void TransTerminal::executer(
         }
 
 
-        // =================================================
         // = : AJOUT D'UNE COMMANDE
         //
         // = X Y B1 X1 B2 X2 ... &
-        // =================================================
 
         else if (operation == "=")
         {
@@ -242,9 +225,12 @@ void TransTerminal::executer(
         }
 
 
-        // =================================================
-        // OPERATION INCONNUE
-        // =================================================
+        // # : CHIFFRE D'AFFAIRES TOTAL
+
+        else if (operation == "#")
+        {
+            liste.Chiffre_affaire();
+        }
 
         else
         {

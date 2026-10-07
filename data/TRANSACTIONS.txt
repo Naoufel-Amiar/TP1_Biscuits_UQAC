@@ -1,10 +1,10 @@
-O CLIENTS.txt COMMANDES.txt
-? Tremblay
-$
-+ Lefebvre 91 RuePapineau
-= Lefebvre Tremblay Chocolat 7 Vanille 2 &
-? Lefebvre
-$
-- Fortin
-$
-S CLIENTS.txt COMMANDES.txt
+#
++ Alice 100 RueA
++ Bob 200 RueB
++ Carla 300 RueC
+= Alice Bob chocolat 5 avoine 2 &
+= Bob Carla chocolat 3 raisins 7 &
+#
+= Carla Alice chocolat 10 &
+= Alice Carla double_chocolat 4 &
+#
