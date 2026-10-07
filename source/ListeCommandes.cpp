@@ -675,4 +675,25 @@ void ListeCommandes::sauvegarder(
     clients.close();
     DelListClient(premierClient);
 
+
+
+    int Chiffre_affaire(Client* &Liste_Clients){
+        Client *Client_Actuel = Liste_Clients;
+        Commande *Liste_Commandes = NULL;
+        Biscuit *Liste_Biscuit = NULL;
+        int sum = 0;
+        while (Clients_Actuel != NULL){
+            Liste_Commandes = Client_Actuel->CommandeAssociee;
+            while (Liste_Commandes != NULL){
+                Liste_Biscuit = Liste_Commandes->Biscuit_suivant;
+                while (Liste_Biscuit != NULL){
+                    sum+= Liste_Biscuit->quantite;
+                    Liste_Biscuit = Liste_Biscuit->suivant;
+                }
+            }
+        }
+        return sum;
+    }
+
+
 }
