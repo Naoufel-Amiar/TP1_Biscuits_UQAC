@@ -705,7 +705,6 @@ void ListeCommandes::sauvegarder(
         return;
     }
 
-    Client* client = premierClient;
     while (client != NULL){
         clients << client->nom << std::endl;
         clients << client->numero << std::endl;

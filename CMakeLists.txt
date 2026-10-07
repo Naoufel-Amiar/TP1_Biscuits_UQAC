@@ -14,7 +14,7 @@ include_directories(
 # Lister tous les fichiers sources (.cpp) nécessaires à la compilation
 set(SOURCES
     ProjetBiscuitJNT.cpp
-    Terminal.cpp
+    TransTerminal.cpp
     source/Biscuit.cpp
     source/Client.cpp
     source/Commande.cpp
