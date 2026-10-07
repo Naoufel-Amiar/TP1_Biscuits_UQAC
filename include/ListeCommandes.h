@@ -66,7 +66,7 @@ public:
         const std::string& fichierCommandes
     );
 
-    int Chiffre_affaire(Client* &Liste_Clients);
+    int Chiffre_affaire();
 };
 
 #endif

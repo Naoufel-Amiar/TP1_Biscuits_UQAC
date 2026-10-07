@@ -677,8 +677,8 @@ void ListeCommandes::sauvegarder(
 
 }
 
-int Chiffre_affaire(Client* &Liste_Clients){
-    Client *Client_Actuel = Liste_Clients;
+int ListeCommandes::Chiffre_affaire(){
+    Client *Client_Actuel = premierClient;
     Commande *Liste_Commandes = NULL;
     Biscuit *Liste_Biscuit = NULL;
     int sum = 0;
