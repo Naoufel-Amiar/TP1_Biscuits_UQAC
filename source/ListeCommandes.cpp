@@ -706,5 +706,6 @@ void ListeCommandes::sauvegarder(
         client = client->suivant;
     }
     clients.close();
+    DelListClient(premierClient);
 
 }
