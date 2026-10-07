@@ -1,9 +1,3 @@
-from pathlib import Path
-
-content = """TP1 – COMMANDES DE BISCUITS
-8INF259 – Structures de données
-
-
 1. PRÉSENTATION DU PROJET
 
 Ce projet a pour objectif de développer en C++ un programme permettant de gérer
@@ -161,8 +155,3 @@ certaines corrections.
 L'intelligence artificielle a ainsi été utilisée comme un outil d'assistance au
 développement et au débogage, et non comme unique moyen de conception ou de
 réalisation du projet.
-"""
-
-path = Path("/mnt/data/README.txt")
-path.write_text(content, encoding="utf-8")
-print(f"Fichier créé : {path}")
