@@ -2,7 +2,6 @@
 #define TRANS_TERMINAL_H
 
 #include <string>
-
 #include "ListeCommandes.h"
 
 class TransTerminal

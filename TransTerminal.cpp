@@ -5,12 +5,20 @@
 #include <string>
 
 
+// =====================================================
+// CONSTRUCTEUR
+// =====================================================
+
 TransTerminal::TransTerminal(
     ListeCommandes& listeCommandes)
     : liste(listeCommandes)
 {
 }
 
+
+// =====================================================
+// EXECUTION DU FICHIER DE TRANSACTIONS
+// =====================================================
 
 void TransTerminal::executer(
     const std::string& fichierTransactions)
@@ -31,11 +39,13 @@ void TransTerminal::executer(
 
     std::string operation;
 
+    // Lecture des operations jusqu'a la fin du fichier.
     while (fichier >> operation)
     {
-        // =============================================
-        // O : OUVERTURE / CHARGEMENT
-        // =============================================
+        // =================================================
+        // O : OUVERTURE DES FICHIERS
+        // O CLIENTS COMMANDES
+        // =================================================
 
         if (operation == "O")
         {
@@ -46,6 +56,10 @@ void TransTerminal::executer(
                 >> fichierClients
                 >> fichierCommandes;
 
+            std::cout
+                << "\n===== TRANSACTION O ====="
+                << std::endl;
+
             liste.charger(
                 fichierClients,
                 fichierCommandes
@@ -53,9 +67,10 @@ void TransTerminal::executer(
         }
 
 
-        // =============================================
+        // =================================================
         // S : SAUVEGARDE
-        // =============================================
+        // S CLIENTS COMMANDES
+        // =================================================
 
         else if (operation == "S")
         {
@@ -66,6 +81,10 @@ void TransTerminal::executer(
                 >> fichierClients
                 >> fichierCommandes;
 
+            std::cout
+                << "\n===== TRANSACTION S ====="
+                << std::endl;
+
             liste.sauvegarder(
                 fichierClients,
                 fichierCommandes
@@ -73,26 +92,164 @@ void TransTerminal::executer(
         }
 
 
-        // =============================================
-        // $
-        // BISCUIT LE PLUS POPULAIRE
-        // =============================================
+        // =================================================
+        // + : AJOUT D'UN CLIENT
+        // + C N A
+        // =================================================
+
+        else if (operation == "+")
+        {
+            std::string nom;
+            int numero;
+            std::string rue;
+
+            fichier
+                >> nom
+                >> numero
+                >> rue;
+
+            std::cout
+                << "\n===== TRANSACTION + ====="
+                << std::endl;
+
+            liste.ajouterClient(
+                nom,
+                numero,
+                rue
+            );
+
+            std::cout
+                << "Client ajoute : "
+                << nom
+                << std::endl;
+        }
+
+
+        // =================================================
+        // - : SUPPRESSION D'UN CLIENT
+        // - X
+        // =================================================
+
+        else if (operation == "-")
+        {
+            std::string nom;
+
+            fichier >> nom;
+
+            std::cout
+                << "\n===== TRANSACTION - ====="
+                << std::endl;
+
+            liste.supprimerClient(
+                nom
+            );
+        }
+
+
+        // =================================================
+        // ? : AFFICHAGE DES COMMANDES D'UN CLIENT
+        // ? X
+        // =================================================
+
+        else if (operation == "?")
+        {
+            std::string nom;
+
+            fichier >> nom;
+
+            std::cout
+                << "\n===== TRANSACTION ? ====="
+                << std::endl;
+
+            liste.afficherCommandes(
+                nom
+            );
+        }
+
+
+        // =================================================
+        // $ : BISCUIT LE PLUS POPULAIRE
+        // =================================================
 
         else if (operation == "$")
         {
+            std::cout
+                << "\n===== TRANSACTION $ ====="
+                << std::endl;
+
             liste.afficherBiscuitPopulaire();
         }
 
 
-        // =============================================
-        // Les autres operations seront ajoutees
-        // juste apres.
-        // =============================================
+        // =================================================
+        // = : AJOUT D'UNE COMMANDE
+        //
+        // = X Y B1 X1 B2 X2 ... &
+        // =================================================
+
+        else if (operation == "=")
+        {
+            std::string source;
+            std::string destinataire;
+
+            fichier
+                >> source
+                >> destinataire;
+
+            std::cout
+                << "\n===== TRANSACTION = ====="
+                << std::endl;
+
+            Commande* commande =
+                liste.ajouterCommande(
+                    source,
+                    destinataire
+                );
+
+            // Lecture des biscuits jusqu'a &
+            std::string biscuit;
+
+            while (fichier >> biscuit)
+            {
+                // & termine la commande.
+                if (biscuit == "&")
+                {
+                    break;
+                }
+
+                int quantite;
+
+                fichier >> quantite;
+
+                // Si la commande n'a pas pu etre creee,
+                // ajouterBiscuit ne fera rien.
+                liste.ajouterBiscuit(
+                    commande,
+                    biscuit,
+                    quantite
+                );
+            }
+
+            if (commande != nullptr)
+            {
+                std::cout
+                    << "Commande ajoutee : "
+                    << source
+                    << " -> "
+                    << destinataire
+                    << std::endl;
+            }
+        }
+
+
+        // =================================================
+        // OPERATION INCONNUE
+        // =================================================
 
         else
         {
             std::cout
-                << "Operation inconnue : "
+                << "Erreur : operation inconnue : "
                 << operation
                 << std::endl;
         }

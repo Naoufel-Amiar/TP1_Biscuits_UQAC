@@ -182,19 +182,18 @@ void ListeCommandes::supprimerClient(
 }
 
 
-// =====================================================
-// AJOUT D'UNE COMMANDE
-// Utilise notamment par : = X Y ...
-// =====================================================
-
 Commande* ListeCommandes::ajouterCommande(
     const std::string& source,
     const std::string& destinataire)
 {
-    // Recherche du client source.
+    // Recherche des deux clients.
     Client* clientSource =
         trouverClient(source);
 
+    Client* clientDestinataire =
+        trouverClient(destinataire);
+
+    // Le client source doit etre inscrit.
     if (clientSource == nullptr)
     {
         std::cout
@@ -205,10 +204,7 @@ Commande* ListeCommandes::ajouterCommande(
         return nullptr;
     }
 
-    // Recherche du client destinataire.
-    Client* clientDestinataire =
-        trouverClient(destinataire);
-
+    // Le destinataire doit egalement etre inscrit.
     if (clientDestinataire == nullptr)
     {
         std::cout
@@ -219,92 +215,65 @@ Commande* ListeCommandes::ajouterCommande(
         return nullptr;
     }
 
-    // Creation de la nouvelle commande.
+    // ADD_Commande gere directement l'ajout
+    // dans la liste chainee du client source.
+    ADD_Commande(
+        clientSource->CommandeAssociee,
+        source,
+        destinataire
+    );
+
+    // Recuperation de la commande qui vient
+    // d'etre ajoutee a la fin de la liste.
     Commande* nouvelleCommande =
-        NewCommande(
-            source,
-            destinataire
-        );
-
-    // Association au Client destinataire.
-    nouvelleCommande->Destinataire =
-        clientDestinataire;
-
-    // Premiere commande du client source.
-    if (clientSource->CommandeAssociee ==
-        nullptr)
-    {
-        clientSource->CommandeAssociee =
-            nouvelleCommande;
-
-        return nouvelleCommande;
-    }
-
-    // Sinon ajout a la fin de la liste
-    // des commandes du client.
-    Commande* courant =
         clientSource->CommandeAssociee;
 
-    while (courant->suivant != nullptr)
+    while (nouvelleCommande->suivant != nullptr)
     {
-        courant = courant->suivant;
+        nouvelleCommande =
+            nouvelleCommande->suivant;
     }
 
-    courant->suivant =
-        nouvelleCommande;
+    // Association avec le client destinataire.
+    nouvelleCommande->Destinataire =
+        clientDestinataire;
 
     return nouvelleCommande;
 }
 
-
-// =====================================================
-// AJOUT D'UN BISCUIT DANS UNE COMMANDE
-// =====================================================
 
 void ListeCommandes::ajouterBiscuit(
     Commande* commande,
     const std::string& nom,
     int quantite)
 {
-    // Impossible d'ajouter un biscuit
-    // si la commande n'existe pas.
     if (commande == nullptr)
     {
         return;
     }
 
+    // ADD_Biscuit gere l'ajout dans
+    // la liste chainee des biscuits.
+    ADD_Biscuit(
+        commande->Biscuit_suivant,
+        nom,
+        quantite
+    );
+
+    // Recuperation du biscuit qui vient
+    // d'etre ajoute a la fin.
     Biscuit* nouveauBiscuit =
-        NewBiscuit(
-            nom,
-            quantite
-        );
-
-    // Association du biscuit a sa commande.
-    nouveauBiscuit->commandeAssociee =
-        commande;
-
-    // Premier biscuit.
-    if (commande->Biscuit_suivant ==
-        nullptr)
-    {
-        commande->Biscuit_suivant =
-            nouveauBiscuit;
-
-        return;
-    }
-
-    // Sinon ajout a la fin de la liste
-    // des biscuits.
-    Biscuit* courant =
         commande->Biscuit_suivant;
 
-    while (courant->suivant != nullptr)
+    while (nouveauBiscuit->suivant != nullptr)
     {
-        courant = courant->suivant;
+        nouveauBiscuit =
+            nouveauBiscuit->suivant;
     }
 
-    courant->suivant =
-        nouveauBiscuit;
+    // Association inverse biscuit -> commande.
+    nouveauBiscuit->commandeAssociee =
+        commande;
 }
 
 
