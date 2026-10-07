@@ -65,11 +65,8 @@ public:
         const std::string& fichierClients,
         const std::string& fichierCommandes
     );
-<<<<<<< Updated upstream
 
     int Chiffre_affaire(Client* &Liste_Clients);
-=======
->>>>>>> Stashed changes
 };
 
 #endif
