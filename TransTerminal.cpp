@@ -167,7 +167,6 @@ void TransTerminal::executer(
 
 
         // = : AJOUT D'UNE COMMANDE
-        //
         // = X Y B1 X1 B2 X2 ... &
 
         else if (operation == "=")
@@ -229,7 +228,7 @@ void TransTerminal::executer(
 
         else if (operation == "#")
         {
-            liste.Chiffre_affaire();
+            std::cout << liste.Chiffre_affaire() << "$" << std::endl;
         }
 
         else

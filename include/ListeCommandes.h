@@ -60,17 +60,16 @@ public:
         const std::string& fichierCommandes
     );
 
-    void afficherChiffreAffaires(
-        const std::string& nomClient
-    );
-
     // Sauvegarde dans les fichiers texte.
     void sauvegarder(
         const std::string& fichierClients,
         const std::string& fichierCommandes
     );
+<<<<<<< Updated upstream
 
     int Chiffre_affaire(Client* &Liste_Clients);
+=======
+>>>>>>> Stashed changes
 };
 
 #endif
