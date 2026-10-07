@@ -129,14 +129,14 @@
     <ClCompile Include="source\Client.cpp" />
     <ClCompile Include="source\Commande.cpp" />
     <ClCompile Include="source\ListeCommandes.cpp" />
-    <ClCompile Include="Terminal.cpp" />
+    <ClCompile Include="TransTerminal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Biscuit.h" />
     <ClInclude Include="include\Client.h" />
     <ClInclude Include="include\Commande.h" />
     <ClInclude Include="include\ListeCommandes.h" />
-    <ClInclude Include="Terminal.h" />
+    <ClInclude Include="TransTerminal.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="data\CLIENTS.txt" />

@@ -40,6 +40,12 @@ public:
         const std::string& destinataire
     );
 
+    void ajouterBiscuit(
+        Commande* commande,
+        const std::string& nom,
+        int quantite
+    );
+
     // Commande ? X
     void afficherCommandes(
         const std::string& nomClient

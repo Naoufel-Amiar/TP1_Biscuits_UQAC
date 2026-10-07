@@ -30,10 +30,10 @@
     <ClCompile Include="source\ListeCommandes.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="source\TestAffichage.cpp">
+    <ClCompile Include="TransTerminal.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Terminal.cpp">
+    <ClCompile Include="source\Biscuit.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,7 +50,7 @@
     <ClInclude Include="include\ListeCommandes.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Terminal.h">
+    <ClInclude Include="TransTerminal.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
