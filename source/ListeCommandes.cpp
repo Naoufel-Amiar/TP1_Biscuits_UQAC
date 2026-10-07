@@ -34,15 +34,36 @@ ListeCommandes::~ListeCommandes()
 // RECHERCHE D'UN CLIENT
 // =====================================================
 
-Client* ListeCommandes::trouverClient(const std::string& nom)
+Client* ListeCommandes::trouverClient(
+    const std::string& nom)
 {
     Client* courant = premierClient;
 
     while (courant != nullptr)
     {
+        // Cas 1 : nom complet
+        // Exemple : "Émilie Tremblay"
         if (courant->nom == nom)
         {
             return courant;
+        }
+
+        // Cas 2 : nom de famille uniquement
+        // Exemple : "Tremblay"
+        std::size_t positionEspace =
+            courant->nom.find_last_of(' ');
+
+        if (positionEspace != std::string::npos)
+        {
+            std::string nomFamille =
+                courant->nom.substr(
+                    positionEspace + 1
+                );
+
+            if (nomFamille == nom)
+            {
+                return courant;
+            }
         }
 
         courant = courant->suivant;
@@ -50,6 +71,7 @@ Client* ListeCommandes::trouverClient(const std::string& nom)
 
     return nullptr;
 }
+
 
 
 // =====================================================
@@ -102,12 +124,12 @@ void ListeCommandes::ajouterClient(
 void ListeCommandes::supprimerClient(
     const std::string& nom)
 {
+    Client* suivant = nullptr;
     Client* courant = premierClient;
     Client* precedent = nullptr;
 
     // Recherche du client dans la liste chainee.
-    while (courant != nullptr &&
-        courant->nom != nom)
+    while (courant->nom != nom || courant != nullptr)
     {
         precedent = courant;
         courant = courant->suivant;
@@ -123,56 +145,14 @@ void ListeCommandes::supprimerClient(
         return;
     }
 
-    // Suppression des references vers le client
-    // dans les commandes des autres clients.
-    //
-    // On ne supprime pas ces commandes :
-    // on neutralise uniquement le pointeur vers
-    // le Client qui va etre detruit.
-    Client* clientParcouru = premierClient;
-
-    while (clientParcouru != nullptr)
-    {
-        Commande* commandeParcourue =
-            clientParcouru->CommandeAssociee;
-
-        while (commandeParcourue != nullptr)
-        {
-            if (commandeParcourue->Destinataire ==
-                courant)
-            {
-                commandeParcourue->Destinataire =
-                    nullptr;
-            }
-
-            commandeParcourue =
-                commandeParcourue->suivant;
-        }
-
-        clientParcouru =
-            clientParcouru->suivant;
-    }
+    suivant = courant->suivant;
+    precedent->suivant = suivant;
 
     // Suppression de toutes les commandes
     // appartenant au client.
     Rm_Commande(
         courant->CommandeAssociee
     );
-
-    // Cas 1 : suppression du premier client.
-    if (precedent == nullptr)
-    {
-        premierClient =
-            courant->suivant;
-    }
-    else
-    {
-        // Cas 2 : suppression au milieu
-        // ou en fin de liste.
-        precedent->suivant =
-            courant->suivant;
-    }
-
     delete courant;
 
     std::cout
