@@ -677,22 +677,22 @@ void ListeCommandes::sauvegarder(
 
 }
 
-    int Chiffre_affaire(Client* &Liste_Clients){
-        Client *Client_Actuel = Liste_Clients;
-        Commande *Liste_Commandes = NULL;
-        Biscuit *Liste_Biscuit = NULL;
-        int sum = 0;
-        while (Client_Actuel != NULL){
-            Liste_Commandes = Client_Actuel->CommandeAssociee;
-            while (Liste_Commandes != NULL){
-                Liste_Biscuit = Liste_Commandes->Biscuit_suivant;
-                while (Liste_Biscuit != NULL){
-                    sum+= Liste_Biscuit->quantite;
-                    Liste_Biscuit = Liste_Biscuit->suivant;
-                }
-                Liste_Commandes = Liste_Commandes->suivant;
+int Chiffre_affaire(Client* &Liste_Clients){
+    Client *Client_Actuel = Liste_Clients;
+    Commande *Liste_Commandes = NULL;
+    Biscuit *Liste_Biscuit = NULL;
+    int sum = 0;
+    while (Client_Actuel != NULL){
+        Liste_Commandes = Client_Actuel->CommandeAssociee;
+        while (Liste_Commandes != NULL){
+            Liste_Biscuit = Liste_Commandes->Biscuit_suivant;
+            while (Liste_Biscuit != NULL){
+                sum+= Liste_Biscuit->quantite;
+                Liste_Biscuit = Liste_Biscuit->suivant;
             }
-            Client_Actuel = Client_Actuel->suivant;
+            Liste_Commandes = Liste_Commandes->suivant;
         }
-        return sum;
+        Client_Actuel = Client_Actuel->suivant;
     }
+    return sum;
+}
