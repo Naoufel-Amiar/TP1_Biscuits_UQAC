@@ -1,4 +1,5 @@
 #include "Client.h"
+#include "Commande.h"
 
 using namespace std;
 
@@ -34,9 +35,12 @@ void ADD_Client (Client* &Liste_Clients, string Name, int Num, string Rue){
 void DelListClient (Client* &Liste_Clients){
     Client* Actu;
     Client* suivant = NULL;
+    Commande* commandeActu;
     Actu = Liste_Clients;
     while (Actu != NULL){
             suivant = Actu->suivant;
+            commandeActu = Actu->CommandeAssociee;
+            Rm_Commande(commandeActu);
             delete Actu;
             Actu = suivant;
     }
