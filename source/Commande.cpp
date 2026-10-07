@@ -1,47 +1,67 @@
 #include "Commande.h"
 #include "Biscuit.h"
 
-using namespace std;
-
-Commande* NewCommande (string Source, string Destinataire){
+Commande* NewCommande(
+    std::string Source,
+    std::string Destinataire)
+{
     Commande* Co = new Commande;
+
     Co->Source = Source;
     Co->destinataire = Destinataire;
-    Co->suivant = NULL;
-    Co->Biscuit_suivant = NULL;
-    Co->Destinataire = NULL;
+    Co->Biscuit_suivant = nullptr;
+    Co->Destinataire = nullptr;
+    Co->suivant = nullptr;
+
     return Co;
 }
 
-void ADD_Commande (Commande* &Liste_Commandes, string Source, string Destinataire){
-    if (Liste_Commandes == NULL){
-        Liste_Commandes = NewCommande(Source, Destinataire);
+
+void ADD_Commande(
+    Commande*& Liste_Commandes,
+    std::string Source,
+    std::string Destinataire)
+{
+    if (Liste_Commandes == nullptr)
+    {
+        Liste_Commandes =
+            NewCommande(Source, Destinataire);
+
         return;
     }
-    Commande* Ptr_Actuel;
-    Ptr_Actuel = Liste_Commandes;
-    while (Ptr_Actuel->suivant != NULL){
+
+    Commande* Ptr_Actuel = Liste_Commandes;
+
+    while (Ptr_Actuel->suivant != nullptr)
+    {
         Ptr_Actuel = Ptr_Actuel->suivant;
     }
-    Ptr_Actuel->suivant = NewCommande(Source, Destinataire);
+
+    Ptr_Actuel->suivant =
+        NewCommande(Source, Destinataire);
 }
 
-void Rm_Commande (Commande* &Liste_Commandes){
-    if (Liste_Commandes == NULL){
-        return;
-    }
-    Commande* Ptr_Actuel;
-    Commande* Ptr_Suivant = NULL;
 
-    Ptr_Actuel = Liste_Commandes;
-    while (Ptr_Actuel != NULL){
-        Ptr_Suivant = Ptr_Actuel->suivant;
-        Ptr_Actuel->Destinataire = NULL;
-        Rm_Biscuit(Ptr_Actuel->Biscuit_suivant);
-        Ptr_Actuel->Biscuit_suivant = NULL;
+void Rm_Commande(
+    Commande*& Liste_Commandes)
+{
+    Commande* Ptr_Actuel = Liste_Commandes;
+
+    while (Ptr_Actuel != nullptr)
+    {
+        Commande* Ptr_Suivant =
+            Ptr_Actuel->suivant;
+
+        Ptr_Actuel->Destinataire = nullptr;
+
+        Rm_Biscuit(
+            Ptr_Actuel->Biscuit_suivant
+        );
+
         delete Ptr_Actuel;
+
         Ptr_Actuel = Ptr_Suivant;
-        Liste_Commandes = NULL;
     }
-        
+
+    Liste_Commandes = nullptr;
 }
