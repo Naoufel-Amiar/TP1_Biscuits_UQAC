@@ -61,8 +61,8 @@ void TransTerminal::executer(
                 << std::endl;
 
             liste.charger(
-                fichierClients,
-                fichierCommandes
+                "../data/" + fichierClients,
+                "../data/" + fichierCommandes
             );
         }
 
@@ -86,8 +86,8 @@ void TransTerminal::executer(
                 << std::endl;
 
             liste.sauvegarder(
-                fichierClients,
-                fichierCommandes
+                "../data/" + fichierClients,
+                "../data/" + fichierCommandes
             );
         }
 

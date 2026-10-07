@@ -3,23 +3,11 @@
 #include "ListeCommandes.h"
 #include "TransTerminal.h"
 
-int main(int argc, char* argv[])
+int main()
 {
     // Le programme doit recevoir le fichier
     // TRANSACTIONS en argument.
-    if (argc < 2)
-    {
-        std::cout
-            << "Erreur : fichier TRANSACTIONS manquant."
-            << std::endl;
-
-        std::cout
-            << "Utilisation : ProjetBiscuitJNT.exe TRANSACTIONS.txt"
-            << std::endl;
-
-        return 1;
-    }
-
+    std::string fichierTransactions = "../data/TRANSACTIONS.txt";
     // Structure principale contenant les clients,
     // commandes et biscuits.
     ListeCommandes liste;
@@ -29,7 +17,7 @@ int main(int argc, char* argv[])
     TransTerminal terminal(liste);
 
     terminal.executer(
-        argv[1]
+        fichierTransactions
     );
 
     return 0;
