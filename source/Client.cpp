@@ -39,10 +39,10 @@ void DelListClient (Client* &Liste_Clients){
     Actu = Liste_Clients;
     while (Actu != NULL){
             suivant = Actu->suivant;
-            commandeActu = Actu->CommandeAssociee;
-            Rm_Commande(commandeActu);
+            Rm_Commande(Actu->CommandeAssociee);
             delete Actu;
             Actu = suivant;
     }
+    Liste_Clients = NULL;
 }
 
