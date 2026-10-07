@@ -501,5 +501,63 @@ void ListeCommandes::sauvegarder(
     const std::string& fichierClients,
     const std::string& fichierCommandes)
 {
-    // Sera complete plus tard.
+    // =====================================================
+    // Enregistrement des Comandes
+    // =====================================================
+
+    std::ofstream commandes(fichierCommandes);
+
+    if (!commandes.is_open())
+    {
+        std::cout << "Erreur : impossible d'ouvrir "
+            << fichierCommandes << std::endl;
+        return;
+    }
+
+    Client* client = premierClient;
+    while (client != NULL){
+        Commande* commande = client->CommandeAssociee;
+        while (commande != NULL){
+
+            commandes << commande->Source << std::endl;
+            commandes << commande->destinataire << std::endl;
+
+            Biscuit* biscuit = commande->Biscuit_suivant;
+            while (biscuit != NULL){
+                commandes << biscuit->nom << " " << biscuit->quantite << std::endl;
+                biscuit = biscuit->suivant;
+            }
+            commande = commande->suivant;
+            commandes << "&" << std::endl;
+        }
+        client = client->suivant;
+    }
+    commandes.close();
+
+
+
+
+
+    // =====================================================
+    // Enregistrement des Clients
+    // =====================================================
+
+    std::ofstream clients(fichierClients);
+
+    if (!clients.is_open())
+    {
+        std::cout << "Erreur : impossible d'ouvrir "
+            << fichierClients << std::endl;
+        return;
+    }
+
+    Client* client = premierClient;
+    while (client != NULL){
+        clients << client->nom << std::endl;
+        clients << client->numero << std::endl;
+        clients << client->Rue << std::endl;
+        client = client->suivant;
+    }
+    clients.close();
+
 }
