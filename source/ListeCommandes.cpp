@@ -10,9 +10,7 @@
 using namespace std;
 
 
-// =====================================================
 // CONSTRUCTEUR
-// =====================================================
 
 ListeCommandes::ListeCommandes()
 {
@@ -20,19 +18,14 @@ ListeCommandes::ListeCommandes()
 }
 
 
-// =====================================================
 // DESTRUCTEUR
-// =====================================================
 
 ListeCommandes::~ListeCommandes()
 {
-    // Sera complete avec la liberation memoire finale.
 }
 
 
-// =====================================================
 // RECHERCHE D'UN CLIENT
-// =====================================================
 
 Client* ListeCommandes::trouverClient(
     const std::string& nom)
@@ -74,9 +67,7 @@ Client* ListeCommandes::trouverClient(
 
 
 
-// =====================================================
 // LIBERATION DES BISCUITS
-// =====================================================
 
 void ListeCommandes::libererBiscuits(Biscuit* &Liste_biscuit)
 {
@@ -84,9 +75,7 @@ void ListeCommandes::libererBiscuits(Biscuit* &Liste_biscuit)
 }
 
 
-// =====================================================
 // LIBERATION DES COMMANDES
-// =====================================================
 
 void ListeCommandes::libererCommandes(Commande* &Liste_Commandes)
 {
@@ -94,13 +83,9 @@ void ListeCommandes::libererCommandes(Commande* &Liste_Commandes)
 }
 
 
-// =====================================================
 // AJOUT D'UN CLIENT
-// =====================================================
 
-// =====================================================
 // AJOUT D'UN CLIENT
-// =====================================================
 
 void ListeCommandes::ajouterClient(
     const std::string& nom,
@@ -116,10 +101,8 @@ void ListeCommandes::ajouterClient(
 }
 
 
-// =====================================================
 // SUPPRESSION D'UN CLIENT
 // Commande : - X
-// =====================================================
 
 void ListeCommandes::supprimerClient(
     const std::string& nom)
@@ -269,10 +252,8 @@ void ListeCommandes::ajouterBiscuit(
 }
 
 
-// =====================================================
 // AFFICHAGE DES COMMANDES D'UN CLIENT
 // Commande : ? X
-// =====================================================
 
 void ListeCommandes::afficherCommandes(
     const std::string& nomClient)
@@ -336,10 +317,8 @@ void ListeCommandes::afficherCommandes(
 }
 
 
-// =====================================================
 // BISCUIT LE PLUS POPULAIRE
 // Commande : $
-// =====================================================
 
 void ListeCommandes::afficherBiscuitPopulaire()
 {
@@ -451,18 +430,14 @@ void ListeCommandes::afficherBiscuitPopulaire()
 }
 
 
-// =====================================================
 // CHARGEMENT DES FICHIERS
 // Commande : O CLIENTS COMMANDES
-// =====================================================
 
 void ListeCommandes::charger(
     const std::string& fichierClients,
     const std::string& fichierCommandes)
 {
-    // =================================================
     // CHARGEMENT DES CLIENTS
-    // =================================================
 
     std::ifstream clients(
         fichierClients
@@ -528,9 +503,7 @@ void ListeCommandes::charger(
     clients.close();
 
 
-    // =================================================
     // CHARGEMENT DES COMMANDES
-    // =================================================
 
     std::ifstream commandes(
         fichierCommandes
@@ -637,19 +610,15 @@ void ListeCommandes::charger(
 }
 
 
-// =====================================================
 // SAUVEGARDE
 // Commande : S CLIENTS COMMANDES
 // Thomas travaille sur cette partie.
-// =====================================================
 
 void ListeCommandes::sauvegarder(
     const std::string& fichierClients,
     const std::string& fichierCommandes)
 {
-    // =====================================================
     // Enregistrement des Comandes
-    // =====================================================
 
     std::ofstream commandes(fichierCommandes);
 
@@ -684,9 +653,7 @@ void ListeCommandes::sauvegarder(
 
 
 
-    // =====================================================
     // Enregistrement des Clients
-    // =====================================================
 
     std::ofstream clients(fichierClients);
 
