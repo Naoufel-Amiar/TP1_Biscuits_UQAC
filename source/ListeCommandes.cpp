@@ -76,31 +76,21 @@ void ListeCommandes::libererCommandes(Commande* commande)
 // AJOUT D'UN CLIENT
 // =====================================================
 
+// =====================================================
+// AJOUT D'UN CLIENT
+// =====================================================
+
 void ListeCommandes::ajouterClient(
     const std::string& nom,
     int numero,
     const std::string& rue)
 {
-    // Creation du nouveau maillon Client.
-    Client* nouveauClient =
-        ADD_Client(nom, numero, rue);
-
-    // Cas 1 : liste vide.
-    if (premierClient == nullptr)
-    {
-        premierClient = nouveauClient;
-        return;
-    }
-
-    // Cas 2 : ajout a la fin de la liste.
-    Client* courant = premierClient;
-
-    while (courant->suivant != nullptr)
-    {
-        courant = courant->suivant;
-    }
-
-    courant->suivant = nouveauClient;
+    ADD_Client(
+        premierClient,
+        nom,
+        numero,
+        rue
+    );
 }
 
 
