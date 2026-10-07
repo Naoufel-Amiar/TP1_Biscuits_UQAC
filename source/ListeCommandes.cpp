@@ -674,5 +674,4 @@ void ListeCommandes::sauvegarder(
     }
     clients.close();
     DelListClient(premierClient);
-
 }
