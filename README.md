@@ -34,7 +34,9 @@ S : sauvegarde de l'état actuel des clients et des commandes dans les fichiers.
 $ : recherche et affichage du type de biscuit le plus populaire ainsi que
     de la quantité totale correspondante.
 
+hashtag : calcul et affichage du chiffre d'affaire total en CAD de tout les biscuit vendu
 
+    
 3. STRUCTURE DU PROGRAMME
 
 Le programme repose principalement sur des structures chaînées permettant de
