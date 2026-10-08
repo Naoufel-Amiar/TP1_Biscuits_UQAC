@@ -1,18 +1,29 @@
-Alice
-Bob
-chocolat 5
-avoine 2
+Alexandre Gagnon
+Émilie Tremblay
+Biscuit1 20
+Biscuit2 34
 &
-Alice
-Carla
-double_chocolat 4
+Émilie Tremblay
+Thomas Bouchard
+Biscuit1 10
+Biscuit2 10
+Biscuit3 10
 &
-Bob
-Carla
-chocolat 3
-raisins 7
+Thomas Bouchard
+Camille Roy
+Biscuit1 15
+Biscuit2 25
+Biscuit3 10
+Biscuit4 5
 &
-Carla
-Alice
-chocolat 10
+Camille Roy
+Julien Fortin
+Biscuit1 10
+Biscuit2 20
+&
+Julien Fortin
+Alexandre Gagnon
+Biscuit1 10
+Biscuit2 15
+Biscuit3 10
 &
