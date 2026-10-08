@@ -9,3 +9,4 @@ O CLIENTS.txt COMMANDES.txt
 = Carla Alice chocolat 10 &
 = Alice Carla double_chocolat 4 &
 #
+S CLIENTS.txt COMMANDES.txt
