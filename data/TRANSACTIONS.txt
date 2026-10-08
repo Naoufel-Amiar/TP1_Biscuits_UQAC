@@ -1,4 +1,3 @@
-O CLIENTS.txt COMMANDES.txt
 #
 + Alice 100 RueA
 + Bob 200 RueB
